@@ -17,8 +17,8 @@ CREATE TABLE skills_dim(
 );
 
 CREATE TABLE job_postings_fact (
-    job_id              INTEGER,
-    company_id          VARCHAR,
+    job_id              INTEGER PRIMARY KEY,
+    company_id          INTEGER,
     job_title_short     VARCHAR,
     job_title           VARCHAR,
     job_location        VARCHAR,
@@ -41,6 +41,7 @@ CREATE TABLE skill_job_dim (
     skill_id INTEGER,
     job_id INTEGER,
     PRIMARY KEY (skill_id, job_id),
-    FOREIGN_KEY (skill_id) REFERENCES skills_dim(skill_id),
-    FOREIGN_KEY (job_id) REFERENCES job_postings_fact(job_id)
+    FOREIGN KEY (skill_id) REFERENCES skills_dim(skill_id),
+    FOREIGN KEY (job_id) REFERENCES job_postings_fact(job_id)
 );
+
