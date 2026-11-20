@@ -5,7 +5,7 @@ FROM read_csv('https://storage.googleapis.com/sql_de/company_dim.csv',
     HEADER=true);
 
 
-INSERT INTO skills_dim (skill_id, skill, type)
+INSERT INTO skills_dim (skill_id, skill, type_job)
 SELECT skill_id, skills, type
 FROM read_csv('https://storage.googleapis.com/sql_de/skills_dim.csv', 
     AUTO_DETECT=true,
@@ -26,8 +26,10 @@ FROM read_csv('https://storage.googleapis.com/sql_de/job_postings_fact.csv',
     AUTO_DETECT=true,
     HEADER=true);
 
-INSERT INTO skills_job_dim (skill_id, job_id)
+INSERT INTO skill_job_dim (skill_id, job_id)
 SELECT skill_id, job_id
-FROM read_csv('https://storage.googleapis.com/sql_de/skills_job_dim.csv', 
+FROM read_csv(
+    'https://storage.googleapis.com/sql_de/skills_job_dim.csv',
     AUTO_DETECT=true,
-    HEADER=true);
+    HEADER=true
+);
