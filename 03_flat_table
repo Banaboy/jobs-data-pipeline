@@ -1,0 +1,32 @@
+CREATE SCHEMA IF NOT EXISTS flat_mart;
+
+CREATE OR REPLACE TABLE flat_mart.job_postings AS
+SELECT
+    j.job_id,
+    j.job_title,
+    j.job_title_short,
+    j.salary_year_avg,
+    j.company_id,
+    c.name AS company_name,
+
+    ARRAY_AGG(
+        STRUCT_PACK(
+            type := s.type,
+            name := s.skills
+        )
+    ) FILTER (
+        WHERE s.skill_id IS NOT NULL
+    ) AS skills_and_types
+
+FROM job_postings_fact AS j
+
+LEFT JOIN company_dim AS c
+    ON j.company_id = c.company_id
+
+LEFT JOIN skills_job_dim AS sj
+    ON j.job_id = sj.job_id
+
+LEFT JOIN skills_dim AS s
+    ON sj.skill_id = s.skill_id
+
+GROUP BY ALL;
