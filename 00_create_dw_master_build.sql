@@ -5,4 +5,4 @@
 .read 02_load_schema_dw.sql
 
 -- 3: Criar flat mart
-.read 03_flat_table
+.read 03_flat_table.sql
