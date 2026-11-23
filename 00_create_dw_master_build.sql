@@ -6,3 +6,9 @@
 
 -- 3: Criar flat mart
 .read 03_flat_table.sql
+
+-- 4: Criar priority mart
+.read 06_create_priority_mart.sql
+
+--5: Inserir dados priority mart
+.read 07_update_priority_mart.sql
