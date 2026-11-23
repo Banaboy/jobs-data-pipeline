@@ -1,3 +1,4 @@
+--duckdb dw_marts.duckdb --c ".read 00_create_dw_master_build"
 -- 1: DataWarehouse - star schema tabelas
 .read 01_tables_data_warehouse.sql
 
@@ -7,5 +8,8 @@
 -- 3: Criar flat mart
 .read 03_flat_table.sql
 
--- 4: Criar Skills Demand Mart
-.read 04_create_skills_mart.sql
+-- 4: Criar priority mart
+.read 06_create_priority_mart.sql
+
+--5: Inserir dados priority mart
+.read 07_update_priority_mart.sql
