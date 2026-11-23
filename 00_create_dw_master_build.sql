@@ -1,3 +1,4 @@
+--duckdb dw_marts.duckdb --c ".read 00_create_dw_master_build"
 -- 1: DataWarehouse - star schema tabelas
 .read 01_tables_data_warehouse.sql
 
