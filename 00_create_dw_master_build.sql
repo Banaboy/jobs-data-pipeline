@@ -6,3 +6,6 @@
 
 -- 3: Criar flat mart
 .read 03_flat_table.sql
+
+-- 4: Criar Skills Demand Mart
+.read 04_create_skills_mart.sql
