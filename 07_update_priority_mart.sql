@@ -24,7 +24,7 @@ USING (
     SELECT
         jpf.job_id,
         jpf.job_title_short,
-        cd.name AS company_name,
+        cd.company_name AS company_name,
         jpf.job_posted_date,
         jpf.salary_year_avg,
         pr.priority_lvl
